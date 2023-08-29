@@ -156,6 +156,27 @@ namespace APINoEFCore.Data.Repositories{
             }
         }
 
+        public void ExecuteStoredProcedure(string storedProcedureName, SqlParameter[] parameters)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = storedProcedureName;
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Add parameters to the command if any
+                if (parameters != null)
+                {
+                    foreach (var parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
+                }
+
+                // Execute the stored procedure
+                command.ExecuteNonQuery();
+            }
+        }
+
     }
 }
 

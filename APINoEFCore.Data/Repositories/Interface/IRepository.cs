@@ -1,3 +1,5 @@
+using System.Data.SqlClient;
+
 namespace APINoEFCore.Data.Repositories.Interface{
     public interface IRepository<T>
     {
@@ -6,5 +8,6 @@ namespace APINoEFCore.Data.Repositories.Interface{
         void Add(T entity);
         void Update(T entity);
         void Delete(Guid id);
+        void ExecuteStoredProcedure(string storedProcedureName, SqlParameter[] parameters);
     }
 }
