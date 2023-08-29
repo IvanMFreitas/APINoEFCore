@@ -14,4 +14,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\APINoEFCore.Data\APINoEFCore.Data.csproj" />
+    <ProjectReference Include="..\APINoEFCore.Services\APINoEFCore.Services.csproj" />
+    <ProjectReference Include="..\APINoEFCore.Entities\APINoEFCore.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
