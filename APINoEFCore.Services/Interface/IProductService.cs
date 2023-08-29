@@ -4,6 +4,6 @@ using APINoEFCore.Entities.ViewModels;
 namespace APINoEFCore.Services.Interface
 {
     public interface IProductService{
-        Product GetById(Guid id);
+        ProductViewModel GetById(Guid id);
     }
 }

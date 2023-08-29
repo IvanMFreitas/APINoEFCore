@@ -5,6 +5,7 @@ using APINoEFCore.Data.Repositories.Interface;
 using APINoEFCore.Entities.Models;
 using APINoEFCore.Services;
 using APINoEFCore.Services.Interface;
+using APINoEFCore.Services.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,11 @@ builder.Services.AddScoped<IDbConnection>(sp =>
 builder.Services.AddScoped<IRepository<Person>, Repository<Person>>();
 builder.Services.AddScoped<IRepository<Order>, Repository<Order>>();
 builder.Services.AddScoped<IRepository<Product>, Repository<Product>>();
+
+//AutoMapper
+builder.Services.AddAutoMapper(typeof(ProductProfile));
+builder.Services.AddAutoMapper(typeof(OrderProfile));
+builder.Services.AddAutoMapper(typeof(PersonProfile));
 
 builder.Services.AddControllers();
 

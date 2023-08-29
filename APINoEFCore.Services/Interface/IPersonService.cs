@@ -4,6 +4,6 @@ using APINoEFCore.Entities.ViewModels;
 namespace APINoEFCore.Services.Interface
 {
     public interface IPersonService{
-        Person GetById(Guid id);
+        PersonViewModel GetById(Guid id);
     }
 }
