@@ -15,11 +15,11 @@ namespace APINoEFCore.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPersonById(Guid id)
+        public IActionResult GetPersonById(Guid id)
         {
             try
             {
-                var person = await _personService.GetByIdAsync(id);
+                var person = _personService.GetById(id);
 
                 if (person == null)
                 {

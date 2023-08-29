@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\APINoEFCore.Entities\APINoEFCore.Entities.csproj" />
+    <ProjectReference Include="..\APINoEFCore.Data\APINoEFCore.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -29,7 +29,7 @@ INSERT INTO [Product]
 		   ('36B119C3-55FA-42FC-948D-F7F314CBDA60','Product 2',5.00,GETDATE())
 GO
 
-/*Create Table Persons*/
+/*Create Table Person*/
 CREATE TABLE [Person](
 	Id uniqueidentifier NOT NULL,
 	Name nvarchar(max) NOT NULL,
@@ -37,19 +37,19 @@ CREATE TABLE [Person](
     Password nvarchar(max) NOT NULL,
 	IsAdmin bit NOT NULL,
 	CreatedAt datetime2(7) NOT NULL,
- CONSTRAINT PK_Persons PRIMARY KEY CLUSTERED 
+ CONSTRAINT PK_Person PRIMARY KEY CLUSTERED 
 (
 	Id ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
-/*Insert on Persons*/
-INSERT INTO [Persons]
-			(Id, Name, CreatedAt)
+/*Insert on Person*/
+INSERT INTO [Person]
+			(Id, Name, Email, Password, IsAdmin, CreatedAt)
      VALUES
            ('690D5EEE-EF40-40A2-9BE4-CD8610C2692C', 'Person 1', 'person1@api.com', '123456', 1, GETDATE()),
-           ('CEB0B506-A565-4C9F-9F92-ED08B949F23B', 'Person 2', 'person2@api.com', '123456', 0, GETDATE()),
+           ('CEB0B506-A565-4C9F-9F92-ED08B949F23B', 'Person 2', 'person2@api.com', '123456', 0, GETDATE())
 GO
 
 /*Create Table Order*/
@@ -67,12 +67,12 @@ CREATE TABLE [Order](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [Order]  WITH CHECK ADD  CONSTRAINT FK_Order_Persons_PersonId FOREIGN KEY(PersonId)
-REFERENCES dbo.Persons (Id)
+ALTER TABLE [Order]  WITH CHECK ADD  CONSTRAINT FK_Order_Person_PersonId FOREIGN KEY(PersonId)
+REFERENCES dbo.Person (Id)
 ON DELETE CASCADE
 GO
 
-ALTER TABLE [Order] CHECK CONSTRAINT FK_Order_Persons_PersonId
+ALTER TABLE [Order] CHECK CONSTRAINT FK_Order_Person_PersonId
 GO
 
 ALTER TABLE [Order]  WITH CHECK ADD  CONSTRAINT FK_Order_Product_ProductId FOREIGN KEY(ProductId)
