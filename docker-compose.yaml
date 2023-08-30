@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: APINoEFCore.API/Dockerfile
+    ports:
+      # Map container port 80 to host port 80
+      - "80:80"  
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      SA_PASSWORD: "ab123CD*"
+      ACCEPT_EULA: Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./APINoEFCore/APINoEFCore.Data/Scripts/:/docker-entrypoint-initdb.d/
