@@ -21,7 +21,7 @@ namespace APINoEFCore.Data.Repositories{
             };
 
             // Construct the SQL query
-            string sql = $"SELECT * FROM {typeof(T).Name} WHERE Id = @Id";
+            string sql = $"SELECT * FROM [{typeof(T).Name}] WHERE Id = @Id";
 
             // Execute the query and return the result
             using (var command = _connection.CreateCommand())
@@ -61,7 +61,7 @@ namespace APINoEFCore.Data.Repositories{
         {
             var result = new List<T>();
 
-            string sql = $"SELECT * FROM {typeof(T).Name}";
+            string sql = $"SELECT * FROM [{typeof(T).Name}]";
 
             using (var command = _connection.CreateCommand())
             {
@@ -98,7 +98,7 @@ namespace APINoEFCore.Data.Repositories{
 
         public void Add(T entity)
         {
-            string sql = $"INSERT INTO {typeof(T).Name} ({string.Join(", ", typeof(T).GetProperties().Select(p => p.Name))}) VALUES ({string.Join(", ", typeof(T).GetProperties().Select(p => "@" + p.Name))})";
+            string sql = $"INSERT INTO [{typeof(T).Name}] ({string.Join(", ", typeof(T).GetProperties().Select(p => p.Name))}) VALUES ({string.Join(", ", typeof(T).GetProperties().Select(p => "@" + p.Name))})";
 
             using (var command = _connection.CreateCommand())
             {
