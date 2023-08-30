@@ -15,12 +15,33 @@ namespace APINoEFCore.API.Controllers
             _personService = personService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         public IActionResult GetPersonById(Guid id)
         {
             try
             {
                 var person = _personService.GetById(id);
+
+                if (person == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(person);
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions, log errors, and return a 500 status code
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpGet("email/{email}")]
+        public IActionResult GetPersonByEmail(string email)
+        {
+            try
+            {
+                var person = _personService.GetByEmail(email);
 
                 if (person == null)
                 {

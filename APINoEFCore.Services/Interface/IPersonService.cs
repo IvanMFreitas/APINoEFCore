@@ -6,6 +6,7 @@ namespace APINoEFCore.Services.Interface
 {
     public interface IPersonService{
         PersonViewModel GetById(Guid id);
+        PersonViewModel GetByEmail(string email);
         public (bool success, string message) Login(string userEmail, string pwd);
         (bool success, string message) CreatePerson(PersonCreateRequestModel request);
         (bool success, string message) UpdatePerson(PersonUpdateRequestModel request, string email);

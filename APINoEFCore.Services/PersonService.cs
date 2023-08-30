@@ -30,6 +30,12 @@ namespace APINoEFCore.Services
             return _mapper.Map<PersonViewModel>(person);
         }
 
+        public PersonViewModel GetByEmail(string email)
+        {
+            var person = _personRepository.GetWhere(x => x.Email == email).FirstOrDefault();
+            return _mapper.Map<PersonViewModel>(person);
+        }
+
         public (bool success, string message) CreatePerson(PersonCreateRequestModel request)
         {
             try
@@ -64,6 +70,8 @@ namespace APINoEFCore.Services
             }
 
         }
+
+        
 
         public (bool success, string message) UpdatePerson(PersonUpdateRequestModel request, string email)
         {

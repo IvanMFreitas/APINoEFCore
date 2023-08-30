@@ -39,6 +39,26 @@ namespace APINoEFCore.Tests.Controllers
         }
 
         [Test]
+        public void GetPersonByEmail_ValidId_ReturnsOk()
+        {
+            // Arrange
+            var id = Guid.NewGuid();
+            var person = new PersonViewModel
+            {
+                Id = id.ToString(),
+                Email = "test@test.com"
+            };
+            _personServiceMock.Setup(service => service.GetByEmail(person.Email)).Returns(person);
+
+            // Act
+            var result = _personController.GetPersonByEmail(person.Email) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.That(result.StatusCode, Is.EqualTo(200));
+        }
+
+        [Test]
         public void GetPersonById_InvalidId_ReturnsNotFound()
         {
             // Arrange
