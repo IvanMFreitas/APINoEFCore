@@ -19,6 +19,7 @@ var configValue = builder.Configuration.GetValue<string>("ConnectionStrings:Defa
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IPasswordService, PasswordService>();
 
 builder.Services.AddScoped<IDbConnection>(sp => 
 {

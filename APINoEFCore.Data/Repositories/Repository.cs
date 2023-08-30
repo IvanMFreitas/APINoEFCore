@@ -134,12 +134,6 @@ namespace APINoEFCore.Data.Repositories{
                     command.Parameters.Add(parameter);
                 }
 
-                // Make sure to include the Id parameter for identifying the entity to update
-                var idParameter = command.CreateParameter();
-                idParameter.ParameterName = "@Id";
-                idParameter.Value = // Set the ID property value here
-                command.Parameters.Add(idParameter);
-
                 command.ExecuteNonQuery();
             }
         }

@@ -32,9 +32,10 @@ GO
 /*Create Table Person*/
 CREATE TABLE [Person](
 	Id uniqueidentifier NOT NULL,
-	Name nvarchar(max) NOT NULL,
-    Email nvarchar(max) NOT NULL,
-    Password nvarchar(max) NOT NULL,
+      Name nvarchar(max) NOT NULL,
+      Email nvarchar(max) NOT NULL,
+      PasswordHash varchar(max) NOT NULL,
+      Salt varchar(max) NOT NULL,
 	IsAdmin bit NOT NULL,
 	CreatedAt datetime2(7) NOT NULL,
  CONSTRAINT PK_Person PRIMARY KEY CLUSTERED 
@@ -46,10 +47,10 @@ GO
 
 /*Insert on Person*/
 INSERT INTO [Person]
-			(Id, Name, Email, Password, IsAdmin, CreatedAt)
+			(Id, Name, Email, PasswordHash, Salt, IsAdmin, CreatedAt)
      VALUES
-           ('690D5EEE-EF40-40A2-9BE4-CD8610C2692C', 'Person 1', 'person1@api.com', '123456', 1, GETDATE()),
-           ('CEB0B506-A565-4C9F-9F92-ED08B949F23B', 'Person 2', 'person2@api.com', '123456', 0, GETDATE())
+           ('690D5EEE-EF40-40A2-9BE4-CD8610C2692C', 'Person 1', 'person1@api.com', 'JgiD2Jk76+mqYxwvs4oWe0NygsMN/Qvs2jqrlfG24Rk=', 'wObeu7Rm8/wwNSxKpEZQjyaPIpYfWNgt/koT66QJ7c8=', 1, GETDATE()),
+           ('CEB0B506-A565-4C9F-9F92-ED08B949F23B', 'Person 2', 'person2@api.com', 'ZczMrUVJSSYRwlBuz7AZhpgLiuHhoqxUb5gO1MQxhVs=', 'sq3lPqq+py2nF3aeILKdo9LwNUwT15BLmXTqPytM/5s=', 0, GETDATE())
 GO
 
 /*Create Table Order*/
