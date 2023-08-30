@@ -5,6 +5,7 @@ namespace APINoEFCore.Data.Repositories.Interface{
     {
         T GetById(Guid id);
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetWhere(Func<T, bool> condition);
         void Add(T entity);
         void Update(T entity);
         void Delete(Guid id);

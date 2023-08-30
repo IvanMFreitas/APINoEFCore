@@ -34,5 +34,21 @@ namespace APINoEFCore.API.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+
+        [HttpGet("generateToken/{email}/{pwd}")]
+        public async Task<IActionResult> Login(string email, string pwd){
+            try
+            {
+                var token = _personService.GenerateJwtToken(email, pwd);
+
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions, log errors, and return a 500 status code
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+
+        }
     }
 }

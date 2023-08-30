@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using APINoEFCore.Services.Interface;
 using APINoEFCore.Entities.RequestModels;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace APINoEFCore.API.Controllers
 {
@@ -37,11 +39,19 @@ namespace APINoEFCore.API.Controllers
         }
 
         [HttpPost("createOrder")]
+        [Authorize]
         public IActionResult CreateOrder(OrderRequestModel request)
         {
             try
             {
-                var (success, message) = _orderService.CreateOrder(request, "690D5EEE-EF40-40A2-9BE4-CD8610C2692C");
+                var userId = User.FindFirst(ClaimTypes.SerialNumber)?.Value;
+                var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+
+                if (userRole != "admin" || userId == null){
+                    return Unauthorized("This user is not authorized to create an order");
+                }
+                
+                var (success, message) = _orderService.CreateOrder(request, userId);
 
                 if (!success){
                     return BadRequest(new { Message = message });

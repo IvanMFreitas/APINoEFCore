@@ -90,6 +90,12 @@ namespace APINoEFCore.Data.Repositories{
             return result;
         }
 
+        public IEnumerable<T> GetWhere(Func<T, bool> condition)
+        {
+            // Perform the filtering using the condition
+            return GetAll().Where(condition);
+        }
+
         public void Add(T entity)
         {
             string sql = $"INSERT INTO {typeof(T).Name} ({string.Join(", ", typeof(T).GetProperties().Select(p => p.Name))}) VALUES ({string.Join(", ", typeof(T).GetProperties().Select(p => "@" + p.Name))})";
