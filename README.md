@@ -1,16 +1,20 @@
 
-  
 
 # .NET Core API
 
-  
+![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white) ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) 
 
 This is a generic API, created, using some technologies and design patterns.
+## :open_book:User Story
+As a Salesforce Administrator, I need a piece of software where I can put Sales orders and retrieve them. 
 
+I also need a piece of software where I can check out the prices of my products. 
+
+This system should also manage User's information, and control access to avoid unauthorized users from creating sales orders, or when created, ensure that the final price of an order is correct
 
 ## :desktop_computer:Technology Stack
 
-**.NET 7**
+**.NET 7** 
 
 **ADO.NET**
 
@@ -19,6 +23,8 @@ This is a generic API, created, using some technologies and design patterns.
 **JWT Authentication**
 
 **nUnit for testing**
+
+**Docker & Docker Compose**
 
 ### Also used as Pattern:
 
